@@ -16,4 +16,4 @@
 
 - Iniciar app Go: go mod init github.com/rodolfoHOk/fullcycle.imersao15/tree/main/codepix
 
-#### 1:13:44
+#### 1:23:56
