@@ -21,3 +21,8 @@
 ## gRPC
 
 - generate go codes: protoc --go_out=application/grpc/pb --go-grpc_out=application/grpc/pb --proto_path=application/grpc/protofiles application/grpc/protofiles/*.proto
+
+## Cobra
+
+- cobra-cli init
+- cobra-cli add grpc
