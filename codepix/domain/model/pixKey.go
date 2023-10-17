@@ -10,7 +10,7 @@ import (
 
 type PixKey struct {
 	Base							 `valid:"required"`
-	King 			string	 `json:"kind" valid:"notnull"`
+	Kind 			string	 `json:"kind" valid:"notnull"`
 	Key 			string 	 `json:"key" valid:"notnull"`
 	AccountID string	 `json:"account_id" valid:"notnull"`
 	Account 	*Account `valid:"-"`
@@ -23,7 +23,7 @@ func (pixKey *PixKey) isValid() error {
 		return err
 	}
 
-	if pixKey.King != "email" && pixKey.King != "cpf" {
+	if pixKey.Kind != "email" && pixKey.Kind != "cpf" {
 		return errors.New("invalid type of key")
 	}
 
@@ -36,7 +36,7 @@ func (pixKey *PixKey) isValid() error {
 
 func NewPixKey(kind string, account *Account, key string) (*PixKey, error) {
 	pixKey := PixKey{
-		King: kind,
+		Kind: kind,
 		Key: key,
 		Account: account,
 		Status: "active",
