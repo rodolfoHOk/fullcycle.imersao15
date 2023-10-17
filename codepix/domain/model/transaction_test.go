@@ -35,7 +35,7 @@ func TestNewTransaction(t *testing.T) {
 	require.NotNil(t, uuid.FromStringOrNil(transaction.ID))
 	require.Equal(t, transaction.Amount, amount)
 	require.Equal(t, transaction.Status, statusTransaction)
-	require.Equal(t, transaction.Description, "My description")
+	require.Equal(t, transaction.Description, "Description test")
 	require.Empty(t, transaction.CancelDescription)
 
 	pixKeySameAccount, _ := model.NewPixKey(kind, account, key)
@@ -43,7 +43,7 @@ func TestNewTransaction(t *testing.T) {
 	_, err = model.NewTransaction(account, amount, pixKeySameAccount, "Description test")
 	require.NotNil(t, err)
 
-	_, err = model.NewTransaction(account, 0, pixKey, "My description")
+	_, err = model.NewTransaction(account, 0, pixKey, "Description test")
 	require.NotNil(t, err)
 }
 
