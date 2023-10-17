@@ -20,6 +20,4 @@
 
 ## gRPC
 
-- 
-
-#### 2 1:02:03
+- generate go codes: protoc --go_out=application/grpc/pb --go-grpc_out=application/grpc/pb --proto_path=application/grpc/protofiles application/grpc/protofiles/*.proto
