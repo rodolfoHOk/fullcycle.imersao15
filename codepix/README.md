@@ -17,3 +17,4 @@
 - Iniciar app Go: go mod init github.com/rodolfoHOk/fullcycle.imersao15/tree/main/codepix
 - Baixar dependências: go mod tidy
 
+#### 2 1:02:03
