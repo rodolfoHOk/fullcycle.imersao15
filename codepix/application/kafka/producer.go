@@ -1,6 +1,10 @@
 package kafka
 
-import ckafka "github.com/confluentinc/confluent-kafka-go/kafka"
+import (
+	"fmt"
+
+	ckafka "github.com/confluentinc/confluent-kafka-go/kafka"
+)
 
 func NewKafkaProducer() *ckafka.Producer {
 	configMap := &ckafka.ConfigMap{
@@ -13,7 +17,7 @@ func NewKafkaProducer() *ckafka.Producer {
 	return producer
 }
 
-func Publish(message string, topic string, producer *ckafka.Producer) error {
+func Publish(message string, topic string, producer *ckafka.Producer, deliveryChan chan ckafka.Event) error {
 	kafkaMessage := &ckafka.Message{
 		TopicPartition: ckafka.TopicPartition{
 			Topic: &topic,
@@ -21,9 +25,22 @@ func Publish(message string, topic string, producer *ckafka.Producer) error {
 		},
 		Value: []byte(message),
 	} 
-	err := producer.Produce(kafkaMessage, nil)
+	err := producer.Produce(kafkaMessage, deliveryChan)
 	if err != nil {
 		return err
 	}
 	return nil
+}
+
+func DeliveryReport(deliveryChan chan ckafka.Event) {
+	for kafkaEvent := range deliveryChan {
+		switch event := kafkaEvent.(type) {
+		case *ckafka.Message: 
+			if event.TopicPartition.Error != nil {
+				fmt.Println("Delivery failed:", event.TopicPartition)
+			} else {
+				fmt.Println("Delivered message to:", event.TopicPartition)
+			}
+		}
+	}
 }
