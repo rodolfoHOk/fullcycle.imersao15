@@ -25,4 +25,4 @@
 ## Cobra
 
 - cobra-cli init
-- cobra-cli add grpc
+- cobra-cli add [command-name]

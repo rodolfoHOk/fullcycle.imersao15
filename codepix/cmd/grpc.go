@@ -17,7 +17,6 @@ var portNumber int
 var grpcCmd = &cobra.Command{
 	Use:   "grpc",
 	Short: "Start gRPC server",
-
 	Run: func(cmd *cobra.Command, args []string) {
 		database := db.ConnectDB(os.Getenv("env"))
 		grpc.StartGrpcServer(database, portNumber)
