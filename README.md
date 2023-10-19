@@ -40,7 +40,7 @@
 
 ![Wire Frame 5](/files/wireframe-5.png)
 
-## CodePix
+## CodePix (Go lang)
 
 ### Detalhes do CodePix
 
@@ -61,3 +61,26 @@
 - Apache Kafka
 - PostgreSQL
 - gRPC
+
+## Bank (Nest Js)
+
+### Visão geral dos projetos
+
+![Visão geral](/files/geral.png)
+
+### Operações
+
+- Criar chave Pix
+- Consultar chave Pix
+- Realizar transferência por Pix
+- Consultar o saldo
+
+### Tecnologias
+
+- Typescript / Javascript
+- Nest.js
+- TypeORM
+- PostgreSQL
+- Rest
+- gRPC
+- Kafka
