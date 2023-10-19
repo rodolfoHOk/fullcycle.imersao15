@@ -39,3 +39,9 @@ Espere os logs verdinhos do Nest para verificar se deu certo.
 
 - Acessar http://localhost:3000/bank-accounts para listar as contas bancárias do banco BBX.
 - Acessar http://localhost:3001/bank-accounts para listar as contas bancárias do banco CTER.
+
+## Nest Js
+
+- nest new [project-name]
+- nest g module [module-name]
+- nest g resource [resource-name]
