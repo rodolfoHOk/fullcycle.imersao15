@@ -14,5 +14,17 @@ Content-Type: application/json
 }
 
 ### Get bank account by id
-@bank_acount_id = 775dd0f6-3be4-448f-8bad-a77b41c7c123
+@bank_acount_id = 67d88a4a-cc19-4245-8e1a-4ef3e617c94f
 GET http://localhost:3000/bank-accounts/{{bank_acount_id}}
+
+### List account pix keys
+GET http://localhost:3000/bank-accounts/{{bank_acount_id}}/pix-keys
+
+### Register account pix key
+POST http://localhost:3000/bank-accounts/{{bank_acount_id}}/pix-keys
+Content-Type: application/json
+
+{
+    "kind": "email",
+    "key": "usertest1@email.com"
+}
