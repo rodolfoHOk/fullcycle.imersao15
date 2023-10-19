@@ -26,5 +26,5 @@ Content-Type: application/json
 
 {
     "kind": "email",
-    "key": "usertest1@email.com"
+    "key": "usertest2@email.com"
 }

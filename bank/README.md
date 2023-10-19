@@ -45,3 +45,7 @@ Espere os logs verdinhos do Nest para verificar se deu certo.
 - nest new [project-name]
 - nest g module [module-name]
 - nest g resource [resource-name]
+
+## gRPC
+
+- npm install @grpc/proto-loader @grpc/grpc-js @nestjs/microservices
