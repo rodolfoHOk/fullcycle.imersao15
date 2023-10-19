@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BankAccountsModule } from './bank-accounts/bank-accounts.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { BankAccount } from './bank-accounts/entities/bank-account.entity';
 
 @Module({
   imports: [
@@ -12,7 +13,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: 'nest',
       username: 'postgres',
       password: 'root',
-      entities: [],
+      entities: [BankAccount],
       synchronize: true,
     }),
     BankAccountsModule,
