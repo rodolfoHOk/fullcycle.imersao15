@@ -1,5 +1,18 @@
 ### Test Hello
 GET http://localhost:3000/test/hello
 
-### List Back accounts
+### List bank accounts
 GET http://localhost:3000/bank-accounts
+
+### Register bank account
+POST http://localhost:3000/bank-accounts
+Content-Type: application/json
+
+{
+    "account_number": "1111-1",
+    "owner_name": "John Doe"
+}
+
+### Get bank account by id
+@bank_acount_id = 775dd0f6-3be4-448f-8bad-a77b41c7c123
+GET http://localhost:3000/bank-accounts/{{bank_acount_id}}
