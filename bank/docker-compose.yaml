@@ -5,6 +5,7 @@ services:
     build: .
     ports:
       - 3000:3000
+      - 3001:3001
     volumes:
       - .:/home/node/app
     extra_hosts:
@@ -14,4 +15,5 @@ services:
     image: postgres:16-alpine
     environment:
       POSTGRES_PASSWORD: root
-      POSTGRES_DB: nest
+    volumes:
+      - .docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
