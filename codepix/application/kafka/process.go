@@ -53,12 +53,12 @@ func (processor *KafkaProcessor) processMessage(kafkaMessage *ckafka.Message) {
 	transactionsTopic := "transactions";
 	transactionConfirmationTopic := "transaction_confirmation";
 
-	switch topic := kafkaMessage.TopicPartition.Topic; topic {
-	case &transactionsTopic:
+	topic := kafkaMessage.TopicPartition.Topic;
+	if (*topic == transactionsTopic) {
 		processor.processTransaction(kafkaMessage)
-	case &transactionConfirmationTopic:
+	} else if (*topic == transactionConfirmationTopic) {
 		processor.processTransactionConfirmation(kafkaMessage)
-	default:
+	} else {
 		fmt.Println("not a valid topic", string(kafkaMessage.Value))
 	}
 }
@@ -78,6 +78,7 @@ func (processor *KafkaProcessor) processTransaction(kafkaMessage *ckafka.Message
 		transaction.PixKeyTo,
 		transaction.PixKeyKindTo,
 		transaction.Description,
+		transaction.ID,
 	)
 	if err != nil {
 		fmt.Println("error registering transaction", err)
@@ -106,6 +107,8 @@ func (processor *KafkaProcessor) processTransactionConfirmation(kafkaMessage *ck
 	if err != nil {
 		return err
 	}
+	println(transaction.ID)
+	println(string(kafkaMessage.Value))
 
 	transactionUseCase := factory.TransactionUseCaseFactory(processor.Database)
 
