@@ -12,7 +12,11 @@ async function bootstrap() {
     new PixKeyGrpcUnknownErrorFilter(),
   );
 
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(
+    new ValidationPipe({
+      errorHttpStatusCode: 422,
+    }),
+  );
 
   await app.listen(3000);
 }

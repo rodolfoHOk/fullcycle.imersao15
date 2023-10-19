@@ -26,5 +26,19 @@ Content-Type: application/json
 
 {
     "kind": "email",
-    "key": "usertest2@email.com"
+    "key": "usertest1@email.com"
+}
+
+### List account transactions
+GET http://localhost:3000/bank-accounts/{{bank_acount_id}}/transactions
+
+### Create a new transaction
+POST http://localhost:3000/bank-accounts/{{bank_acount_id}}/transactions
+Content-Type: application/json
+
+{
+    "pix_key_key": "usertest1@email.com",
+    "pix_key_kind": "email",
+    "description": "Test transaction",
+    "amount": 10.00
 }
