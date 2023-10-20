@@ -13,6 +13,8 @@ const theme = createTheme({
     mode: 'light',
     primary: {
       main: blue[500],
+      light: blue[300],
+      dark: blue[700],
       contrastText: '#fff',
     },
   },
