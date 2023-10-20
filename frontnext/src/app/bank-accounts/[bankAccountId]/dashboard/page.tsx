@@ -23,9 +23,14 @@ async function getTransactions(bankAccountId: string): Promise<Transaction[]> {
 
 export default async function BankAccountDashboardPage({
   params,
+  searchParams,
 }: {
   params: { bankAccountId: string };
+  searchParams: { page: string; per_page: string };
 }) {
+  const page = parseInt(searchParams.page) || 1;
+  const perPage = parseInt(searchParams.per_page) || 10;
+
   const transactions = await getTransactions(params.bankAccountId);
 
   return (
@@ -67,7 +72,12 @@ export default async function BankAccountDashboardPage({
       <Grid2 xs={12}>
         <Typography variant="h5">Últimos lançamentos</Typography>
 
-        <LatestTransactions transactions={transactions} />
+        <LatestTransactions
+          transactions={transactions}
+          bankAccountId={params.bankAccountId}
+          page={page}
+          perPage={perPage}
+        />
       </Grid2>
     </Grid2>
   );

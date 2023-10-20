@@ -1,3 +1,5 @@
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 import { CardAction } from '@/components/CardAction/CardAction';
 import { BankAccount } from '@/models/models';
 import { Typography } from '@mui/material';
@@ -24,7 +26,13 @@ export default async function BankAccountsPage() {
       <Grid2 container spacing={2} mt={1}>
         {bankAccounts.map((bankAccount) => (
           <Grid2 key={bankAccount.id} xs={12} sm={6} md={4}>
-            <CardAction>
+            <CardAction
+              action={async () => {
+                'use server';
+                cookies().set('bankAccountId', bankAccount.id);
+                redirect(`/bank-accounts/${bankAccount.id}/dashboard`);
+              }}
+            >
               <Typography variant="h5" component="div">
                 {bankAccount.owner_name}
               </Typography>

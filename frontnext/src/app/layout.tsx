@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ThemeRegistry } from '../components/ThemeRegistry/ThemeRegistry';
 import { Box } from '@mui/material';
+import { Navbar } from '@/components/Navbar/Navbar';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,6 +17,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeRegistry>
+          <Navbar />
+
           <Box
             component="main"
             sx={{
