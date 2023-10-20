@@ -2,7 +2,7 @@ import { Typography } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import { CurrentBalance } from '@/components/CurrentBalance/CurrentBalance';
 import { CardAction } from '@/components/CardAction/CardAction';
-import { MyLatestTransactions } from './MyLatestTransactions';
+import { LatestTransactions } from './LatestTransactions';
 import { Transaction } from '@/models/models';
 
 async function getTransactions(bankAccountId: string): Promise<Transaction[]> {
@@ -55,7 +55,7 @@ export default async function BankAccountDashboardPage({
       <Grid2 xs={12}>
         <Typography variant="h5">Últimos lançamentos</Typography>
 
-        <MyLatestTransactions transactions={transactions} />
+        <LatestTransactions transactions={transactions} />
       </Grid2>
     </Grid2>
   );

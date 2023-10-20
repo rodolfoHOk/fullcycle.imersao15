@@ -31,12 +31,10 @@ const columns: GridColDef[] = [
   },
 ];
 
-type MyLatestTransactionsProps = {
+type LatestTransactionsProps = {
   transactions: Transaction[];
 };
 
-export function MyLatestTransactions({
-  transactions,
-}: MyLatestTransactionsProps) {
+export function LatestTransactions({ transactions }: LatestTransactionsProps) {
   return <DataGrid rows={transactions} columns={columns} />;
 }
