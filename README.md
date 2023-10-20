@@ -84,3 +84,20 @@
 - Rest
 - gRPC
 - Kafka
+
+## Bank Frontend (Next Js)
+
+### Tecnologias
+
+- Typescript / Javascript
+- Next Js
+- React Js
+- React Server components
+- Material UI
+
+### Páginas
+
+- Lista de contas do banco
+- Home com informações da conta
+- Criar e listar chaves Pix da conta
+- Fazer transferência por Pix utilizando a conta atual
