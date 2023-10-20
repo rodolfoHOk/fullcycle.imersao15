@@ -15,5 +15,9 @@ services:
     image: postgres:16-alpine
     environment:
       POSTGRES_PASSWORD: root
+    ports:
+      - 5433:5432
     volumes:
       - .docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
