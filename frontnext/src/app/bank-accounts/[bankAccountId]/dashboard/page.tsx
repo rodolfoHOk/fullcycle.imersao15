@@ -12,6 +12,7 @@ async function getTransactions(bankAccountId: string): Promise<Transaction[]> {
     {
       next: {
         revalidate: 10,
+        tags: [`bank-accounts/${bankAccountId}`],
       },
     }
   );

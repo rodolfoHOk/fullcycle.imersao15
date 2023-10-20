@@ -7,6 +7,7 @@ export async function getBankAccount(
   const response = await fetch(`${nestApiUrl}/bank-accounts/${bankAccountId}`, {
     next: {
       revalidate: 20,
+      tags: [`bank-accounts/${bankAccountId}`],
     },
   });
 
