@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Typography } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import { CurrentBalance } from '@/components/CurrentBalance/CurrentBalance';
@@ -37,19 +38,29 @@ export default async function BankAccountDashboardPage({
 
       <Grid2 container xs={12} lg={6} spacing={1}>
         <Grid2 xs={6}>
-          <CardAction sx={{ display: 'flex', alignItems: 'center' }}>
-            <Typography component="span" color={'primary'}>
-              Transferência
-            </Typography>
-          </CardAction>
+          <Link
+            href={`/bank-accounts/${params.bankAccountId}/withdraw`}
+            style={{ textDecoration: 'none' }}
+          >
+            <CardAction sx={{ display: 'flex', alignItems: 'center' }}>
+              <Typography component="span" color={'primary'}>
+                Transferência
+              </Typography>
+            </CardAction>
+          </Link>
         </Grid2>
 
         <Grid2 xs={6}>
-          <CardAction sx={{ display: 'flex', alignItems: 'center' }}>
-            <Typography component="span" color={'primary'}>
-              Nova chave pix
-            </Typography>
-          </CardAction>
+          <Link
+            href={`/bank-accounts/${params.bankAccountId}/pix`}
+            style={{ textDecoration: 'none' }}
+          >
+            <CardAction sx={{ display: 'flex', alignItems: 'center' }}>
+              <Typography component="span" color={'primary'}>
+                Nova chave pix
+              </Typography>
+            </CardAction>
+          </Link>
         </Grid2>
       </Grid2>
 
