@@ -114,10 +114,15 @@
 
 `docker build -t rodolfohok/bank-api:latest -f bank/Dockerfile.prod bank`
 
+- build bank-front:
+
+`docker build -t rodolfohok/bank-front:latest -f frontnext/Dockerfile.prod frontnext`
+
 ### Kind
 
 - website: https://kind.sigs.k8s.io/docs/user/quick-start
 - create cluster: kind create cluster --name=codepix
+- create cluster: kind delete cluster --name=codepix
 
 ### Helm
 
@@ -127,14 +132,15 @@
 - postgres helm chart: https://github.com/bitnami/charts/tree/main/bitnami/postgresql
 - add repo: helm repo add bitnami https://charts.bitnami.com/bitnami
 - install postgres: helm install postgres bitnami/postgresql
-- env postgres password: export POSTGRES_PASSWORD=$(kubectl get secret --namespace default postgres-postgresql -o jsonpath="{.data.postgres-password}" | base64 -d)
-- get postgres password: echo $POSTGRES_PASSWORD -> lg11Q0kmFY
-- view postgres pode: kubectl get pods
-- access postgres pod: kubectl run postgres-postgresql-client --rm --tty -i --restart='Never' --namespace default --image docker.io/bitnami/postgresql:16.0.0-debian-11-r13 --env="PGPASSWORD=$POSTGRES_PASSWORD" \
-   --command -- psql --host postgres-postgresql -U postgres -d postgres -p 5432
-- create databases: create database codepix; create database bank001; create database bank002;
-- postgres host: postgres-postgresql.default.svc.cluster.local
+- postgres host: xxx see terminal
+- env postgres password: xxx see terminal
+- get postgres password: echo $xxx see terminal
+- access postgres pod psql: xxx see terminal
 - install kafka: helm install kafka bitnami/kafka
+- kafka host: xxx see terminal
+- kafka user: xxx see terminal
+- env kafka password: xxx see terminal
+- get kafka password: echo $xxx see terminal
 
 ### kubectl
 
@@ -148,8 +154,9 @@
 - describe pod: kubectl describe pod codepix-66ddd97d75-ccfm4
 - get pod logs: kubectl logs codepix-66ddd97d75-ccfm4
 - apply secret: kubectl apply -f secret.yaml
-- get services: kubectl get services
 - delete pod: kubectl delete pod codepix-57964dd5d9-pwtqf
 - apply service: kubectl apply -f service.yaml
-- access pod: kubectl exec -it bankapi-8df94c6bc-6g87k bash
-- port forward: kubectl port-forward svc/bankapi-service 8080:3000
+- get services: kubectl get services
+- access pod bash: kubectl exec -it bankapi-8df94c6bc-6g87k bash
+- apply all: kubectl apply -f .
+- port forward: kubectl port-forward svc/bankfrontend-service 9090:3000
