@@ -31,6 +31,10 @@ func (processor *KafkaProcessor) Consume() {
 		"bootstrap.servers": os.Getenv("kafkaBootstrapServers"),
 		"group.id": os.Getenv("kafkaConsumerGroupId"),
 		"auto.offset.reset":"earliest",
+		"security.protocol": os.Getenv("security.protocol"),
+		"sasl.mechanisms": os.Getenv("sasl.mechanisms"),
+		"sasl.username": os.Getenv("sasl.username"),
+		"sasl.password": os.Getenv("sasl.password"),
 	}
 	consumer, err := ckafka.NewConsumer(configMap);
 	if err != nil {

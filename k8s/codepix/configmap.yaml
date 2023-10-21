@@ -13,4 +13,6 @@ data:
     kafkaBootstrapServers="kafka:9092"
     kafkaConsumerGroupId="codepix"
     kafkaTransactionTopic="transactions"
-    kafkaTransactionConfirmationTopic="transaction_confirmation"
+    kafkaTransactionConfirmationTopic="transaction_confirmation
+    security.protocol="sasl_plaintext"
+    sasl.mechanisms="PLAIN"

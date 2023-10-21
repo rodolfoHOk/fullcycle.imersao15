@@ -108,7 +108,11 @@
 
 - build codepix-go:
 
-`docker build -t rodolfohok/codepix-go:lastest -f codepix/Dockerfile.prod codepix`
+`docker build -t rodolfohok/codepix-go:latest -f codepix/Dockerfile.prod codepix`
+
+- build bank-api:
+
+`docker build -t rodolfohok/bank-api:latest -f bank/Dockerfile.prod bank`
 
 ### Kind
 
@@ -128,7 +132,7 @@
 - view postgres pode: kubectl get pods
 - access postgres pod: kubectl run postgres-postgresql-client --rm --tty -i --restart='Never' --namespace default --image docker.io/bitnami/postgresql:16.0.0-debian-11-r13 --env="PGPASSWORD=$POSTGRES_PASSWORD" \
    --command -- psql --host postgres-postgresql -U postgres -d postgres -p 5432
-- create databases: create database codepix; create database bak001; create database bak002;
+- create databases: create database codepix; create database bank001; create database bank002;
 - postgres host: postgres-postgresql.default.svc.cluster.local
 - install kafka: helm install kafka bitnami/kafka
 
@@ -147,3 +151,5 @@
 - get services: kubectl get services
 - delete pod: kubectl delete pod codepix-57964dd5d9-pwtqf
 - apply service: kubectl apply -f service.yaml
+- access pod: kubectl exec -it bankapi-8df94c6bc-6g87k bash
+- port forward: kubectl port-forward svc/bankapi-service 8080:3000
