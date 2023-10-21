@@ -101,3 +101,49 @@
 - Home com informações da conta
 - Criar e listar chaves Pix da conta
 - Fazer transferência por Pix utilizando a conta atual
+
+## Kubernetes
+
+### Build docker images
+
+- build codepix-go:
+
+`docker build -t rodolfohok/codepix-go:lastest -f codepix/Dockerfile.prod codepix`
+
+### Kind
+
+- website: https://kind.sigs.k8s.io/docs/user/quick-start
+- create cluster: kind create cluster --name=codepix
+
+### Helm
+
+- website: https://helm.sh/docs/intro/install/
+- charts: https://helm.sh/docs/topics/charts/
+- bitnami charts: https://charts.bitnami.com/
+- postgres helm chart: https://github.com/bitnami/charts/tree/main/bitnami/postgresql
+- add repo: helm repo add bitnami https://charts.bitnami.com/bitnami
+- install postgres: helm install postgres bitnami/postgresql
+- env postgres password: export POSTGRES_PASSWORD=$(kubectl get secret --namespace default postgres-postgresql -o jsonpath="{.data.postgres-password}" | base64 -d)
+- get postgres password: echo $POSTGRES_PASSWORD -> lg11Q0kmFY
+- view postgres pode: kubectl get pods
+- access postgres pod: kubectl run postgres-postgresql-client --rm --tty -i --restart='Never' --namespace default --image docker.io/bitnami/postgresql:16.0.0-debian-11-r13 --env="PGPASSWORD=$POSTGRES_PASSWORD" \
+   --command -- psql --host postgres-postgresql -U postgres -d postgres -p 5432
+- create databases: create database codepix; create database bak001; create database bak002;
+- postgres host: postgres-postgresql.default.svc.cluster.local
+- install kafka: helm install kafka bitnami/kafka
+
+### kubectl
+
+- website: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+- cluster info: kubectl cluster-info --context kind-codepix
+- get nodes: kubectl get nodes
+- docker list running containers: docker ps
+- apply config map: kubectl apply -f configmap.yaml
+- apply deployment: kubectl apply -f deploy.yaml
+- get pods: kubectl get pods
+- describe pod: kubectl describe pod codepix-66ddd97d75-ccfm4
+- get pod logs: kubectl logs codepix-66ddd97d75-ccfm4
+- apply secret: kubectl apply -f secret.yaml
+- get services: kubectl get services
+- delete pod: kubectl delete pod codepix-57964dd5d9-pwtqf
+- apply service: kubectl apply -f service.yaml
